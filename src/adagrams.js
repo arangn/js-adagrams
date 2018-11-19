@@ -31,14 +31,27 @@ const Adagrams = {
     let lettersInHand = []
     for (let i = 0; i < 10; i++) {
       let rand = letters.splice(Math.floor(Math.random() * letters.length), 1)[0];
-      hand.push(rand);
+      lettersInHand.push(rand);
     }
     return lettersInHand;
   },
 
-  const = usesAvailableLetters?(input, lettersInHand) {
-    inputArray = input.split("");
+  usesAvailableLetters(input, lettersInHand) {
+    let inputArray = input.split("");
+    let lettersArray = lettersInHand.slice();
+
+    for (let letter of inputArray) {
+      let index = lettersArray.indexOf(letter);
+      if (index > -1) {
+        lettersArray.splice(index, 1);
+      } else {
+        return false;
+      }
+    }
+    return true;
   }
+
+
 };
 
 // Do not remove this line or your tests will break!
